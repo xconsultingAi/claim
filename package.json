@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.1475.0",
+        "bootstrap": "~5.1.0",
+        "printthis": "^0.1.5",
+        "pusher-js": "^8.4.0-rc2",
+        "tippy.js": "^6.3.7"
+    },
+    "devDependencies": {
+        "@alpinejs/focus": "^3.10.5",
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.0",
+        "alpinejs": "^3.0.6",
+        "autoprefixer": "^10.4.7",
+        "axios": "^0.25",
+        "browser-sync": "^2.27.7",
+        "browser-sync-webpack-plugin": "2.3.0",
+        "laravel-echo": "^1.16.1",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "popper.js": "^1.16.1",
+        "postcss": "^8.4.14",
+        "pusher-js": "^8.4.0-rc2",
+        "resolve-url-loader": "5.0.0",
+        "rtlcss": "^3.0",
+        "sass": "1.30.0",
+        "sass-loader": "12.1.0",
+        "tailwindcss": "^3.1.0"
+    }
+}

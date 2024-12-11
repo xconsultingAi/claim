@@ -1,0 +1,57 @@
+@media print {
+    body {
+        visibility: hidden;
+    }
+
+    #letter {
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+/* styles.css */
+
+/* Preserve font styles */
+#letter {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Preserve text alignment */
+#letter {
+    text-align: left;
+}
+
+/* Preserve line height */
+#letter {
+    line-height: 1.5;
+}
+
+/* Preserve margins and padding */
+#letter {
+    margin: 20px;
+    padding: 10px;
+}
+
+/* Preserve borders and box shadow */
+#letter {
+    border: 1px solid #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Preserve background color and image */
+#letter {
+    background-color: #fff;
+    background-image: url('path/to/image.jpg');
+    background-size: cover;
+}
+
+/* Preserve width and height */
+#letter {
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,109 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "badge": "",
+      "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+      "icon": "home",
+      "slug": "",
+      "permission": "dashboard",
+      "submenu": [
+        {
+          "url": "/",
+          "name": "Analytics",
+          "icon": "circle",
+          "slug": "dashboard-analytics",
+          "permission": "dashboard"
+        }
+      ]
+    },
+    {
+      "url": "company/",
+          "name": "Logistics Company",
+          "icon": "calendar",
+          "permission": "company",
+          "slug": "company.index"
+    },
+    {
+      "url": "private-clinic/appointment/",
+      "name": "Appointments",
+      "icon": "file-plus",
+      "permission": "appointment",
+      "slug": "private-clinic.appointment.index"
+    },
+    
+ 
+    {
+      "url": "shop/",
+          "name": "Shop",
+          "icon": "plus-square",
+          "permission": "shop",
+          "slug": "shop.index"
+    },
+    {
+      "url": "vehicle/",
+          "name": "Vehicles",
+          "icon": "circle",
+          "permission": "vehicle",
+          "slug": "vehicle.index"
+    },
+    {
+      "url": "driver/",
+          "name": "Drivers",
+          "icon": "circle",
+          "permission": "driver",
+          "slug": "driver.index"
+    },
+    {
+      "url": "location/",
+          "name": "Location Search",
+          "icon": "circle",
+          "permission": "location",
+          "slug": "location.index"
+    },
+    {
+      "url": "searchlocation/",
+          "name": "Location Searchs",
+          "icon": "circle",
+          "permission": "searchlocation",
+          "slug": "searchlocation.index"
+    },
+    {
+      "name": "Roles & Permission",
+      "icon": "shield",
+      "slug": "",
+      "permission": "roles_read",
+      "submenu": [
+        {
+          "url": "roles",
+          "name": "Roles",
+          "icon": "circle",
+          "permission": "roles_read",
+          "slug": "roles"
+        },
+        {
+          "url": "permissions",
+          "name": "Permission",
+          "icon": "circle",
+          "permission": "roles_read",
+          "slug": "permission"
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "icon": "settings",
+      "slug": "",
+      "permission": "hms-settings",
+      "submenu": [
+        {
+          "url": "has-permission",
+          "name": "Super Permissions",
+          "icon": "circle",
+          "permission": "hms-settings",
+          "slug": "has-permission.index"
+        }
+      ]
+    }
+  ]
+}

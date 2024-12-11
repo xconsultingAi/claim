@@ -1,0 +1,443 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "badge": "",
+      "badgeClass": "badge badge-light-warning rounded-pill ms-auto me-1",
+      "icon": "home",
+      "slug": "",
+      "permission": "dashboard",
+      "submenu": [
+        {
+          "url": "/",
+          "name": "Analytics",
+          "icon": "circle",
+          "slug": "dashboard-analytics",
+          "permission": "dashboard"
+        }
+      ]
+    },
+    {
+      "url": "private-clinic/appointment/calendar-view/",
+          "name": "Calendar",
+          "icon": "calendar",
+          "permission": "calendar",
+          "slug": "private-clinic.appointment.calendar-view"
+    },
+    {
+      "url": "private-clinic/appointment/",
+      "name": "Appointments",
+      "icon": "file-plus",
+      "permission": "appointment",
+      "slug": "private-clinic.appointment.index"
+    },
+    {
+      "url": "private-clinic/branch",
+          "name": "Branches",
+          "icon": "list",
+          "permission": "branches",
+          "slug": "private-clinic.branch.index"
+    },
+    {
+      "url": "private-clinic/doctor",
+          "name": "Doctor",
+          "icon": "plus-square",
+          "permission": "doctor",
+          "slug": "private-clinic.doctor.index"
+    },
+    {
+      "url": "private-clinic/patient",
+          "name": "Patient",
+          "icon": "user-plus",
+          "permission": "patient",
+          "slug": "private-clinic.patient.index"
+    },
+    {
+      "url": "private-clinic/user",
+          "name": "Users",
+          "icon": "users",
+          "permission": "private-user",
+          "slug": "private-clinic.user.index"
+    },
+    {
+      "url": "patient-visit",
+      "name": "Reception",
+      "icon": "search",
+      "permission": "patient-visit_read",
+      "slug": "patient-visit.index"
+    },
+    {
+      "url": "patient-visit/list",
+      "name": "Patient Progress",
+      "icon": "git-pull-request",
+      "permission": "patient-progress",
+      "slug": "patient-visit.list"
+    },
+    {
+      "url": "doctor-desk/opd",
+      "name": "Doctor Desk",
+      "icon": "activity",
+      "slug": "doctor-desk",
+      "permission": "patient-opd_read"
+    },
+    {
+      "name": "User",
+      "icon": "users",
+      "slug": "",
+      "permission": "user_read",
+      "submenu": [
+        {
+          "url": "user/list",
+          "name": "User",
+          "icon": "circle",
+          "permission": "user_read",
+          "slug": "user-list"
+        },
+        {
+          "url": "dependent/list",
+          "name": "Dependent",
+          "icon": "circle",
+          "permission": "dependent_read",
+          "slug": "dependent-list"
+        },
+        {
+          "url": "patient",
+          "name": "Patient",
+          "icon": "circle",
+          "permission": "unverified",
+          "slug": "index"
+        },
+        {
+          "url": "patient/list",
+          "name": "Patient List",
+          "icon": "circle",
+          "permission": "patient_read",
+          "slug": "patient-list"
+        },
+        {
+          "url": "doctor/list",
+          "name": "Doctor",
+          "icon": "circle",
+          "permission": "doctor_read",
+          "slug": "doctor-list"
+        },
+        {
+          "url": "receptionist/list",
+          "name": "Receptionist",
+          "icon": "circle",
+          "permission": "receptionist_read",
+          "slug": "receptionist-list"
+        },
+        {
+          "url": "pharmacist/list",
+          "name": "Pharmacist",
+          "icon": "circle",
+          "permission": "pharmacist_read",
+          "slug": "pharmacist-list"
+        }
+      ]
+    },
+    {
+      "name": "Types",
+      "icon": "grid",
+      "slug": "",
+      "permission": "types",
+      "submenu": [
+        {
+          "url": "type/doctor",
+          "name": "Doctor",
+          "icon": "circle",
+          "permission": "doctor-type_read",
+          "slug": "type.doctor.index"
+        },
+        {
+          "url": "type/patient",
+          "name": "Patient",
+          "icon": "circle",
+          "permission": "patient-type_read",
+          "slug": "type.patient.index"
+        },
+        {
+          "url": "type/status",
+          "name": "Status Definition",
+          "icon": "circle",
+          "permission": "status-definition",
+          "slug": "type.status.index"
+        },
+        {
+          "url": "clinical-services",
+          "name": "Clinical Services",
+          "icon": "circle",
+          "permission": "clinical-services_read",
+          "slug": "clinical-services.index"
+        },
+        {
+          "url": "departments",
+          "name": "Departments",
+          "icon": "circle",
+          "permission": "departments_read",
+          "slug": "departments.index"
+        }
+      ]
+    },
+    {
+      "name": "Pharmacy Management",
+      "icon": "grid",
+      "slug": "",
+      "permission": "pharmacy_read",
+      "submenu": [
+        {
+          "url": "medicines/pharmacy",
+          "name": "Branches",
+          "icon": "circle",
+          "permission": "branch_read",
+          "slug": "medicines.pharmacy.index"
+        },
+        {
+          "url": "medicines/medicine-dispensed/lp",
+          "name": "Outsourced",
+          "icon": "circle",
+          "permission": "lp-dispensed",
+          "slug": "medicines.lp-dispensed.index"
+        },
+        {
+          "url": "medicines/medicine-dispensed",
+          "name": "Pharmacy",
+          "icon": "circle",
+          "permission": "medicine-dispensed",
+          "slug": "medicines.medicine-dispensed.index"
+        },
+        {
+          "url": "medicines/request-indent",
+          "name": "Request Indent",
+          "icon": "circle",
+          "permission": "request-indent_read",
+          "slug": "medicines.request-indent.index"
+        },
+        {
+          "url": "medicines/manufacturers",
+          "name": "Manufacturer",
+          "icon": "circle",
+          "permission": "manufacturers_read",
+          "slug": "medicines.manufacturers.index"
+        },
+        {
+          "url": "medicines/dosage-forms",
+          "name": "Dosage Form",
+          "icon": "circle",
+          "permission": "dosage-forms_read",
+          "slug": "medicines.dosage-forms.index"
+        },
+        {
+          "url": "medicines",
+          "name": "Medicines",
+          "icon": "circle",
+          "permission": "medicines_read",
+          "slug": "medicines.index"
+        },
+        
+        {
+          "url": "medicines/inventory-items",
+          "name": "Inventory Items",
+          "icon": "circle",
+          "permission": "inventory-items_read",
+          "slug": "medicines.inventory-items.index"
+        },
+        {
+          "url": "medicines/inventory-in-bulk",
+          "name": "Inventory In Bulk",
+          "icon": "circle",
+          "permission": "inventory-in-bulk",
+          "slug": "medicines.inventory-in-bulk.bulk"
+        }
+      ]
+    },
+
+    {
+           "name": "Reports",
+           "icon": "grid",
+           "slug": "",
+           "permission": "reports",
+           "submenu": [
+         {
+           "url": "medicines/inventory-items/list",
+           "name": "Stock Reports",
+           "icon": "circle",
+           "permission": "inventory-items-stock",
+           "slug": "medicines.inventory-items.stock"
+         },
+         {
+          "url": "medicines/inventory-items/patient-report",
+          "name": "Patient Reports",
+          "icon": "circle",
+          "permission": "patient-report",
+          "slug": "medicines.inventory-items.patient-report"
+        },
+         {
+           "url": "medicines/inventory-items/patient",
+           "name": "Medicines Reports",
+           "icon": "circle",
+           "permission": "medicines-report",
+           "slug": "medicines.inventory-items.patient"
+         },
+          {
+           "url": "report/patient-visit",
+           "name": "Patient Visit Report",
+           "icon": "circle",
+           "permission": "patient-visit-report",
+           "slug": "report.patient-visit"
+         },
+         {
+          "url": "report/procedure-account-report-view",
+          "name": "Procedure Accounts",
+          "icon": "circle",
+          "permission": "procedure-account-report",
+          "slug": "report.procedure-account-report-view"
+        }
+      ]
+    },
+
+
+    {
+      "name": "Agency",
+      "icon": "git-pull-request",
+      "slug": "",
+      "permission": "Agency-desk",
+      "submenu": [
+        {
+          "url": "agencies",
+          "name": "Agency Panel",
+          "icon": "circle",
+          "permission": "Agency",
+          "slug": "agencies.index"
+        },
+        {
+          "url": "agencies-rules",
+          "name": "Agency Rules",
+          "icon": "circle",
+          "permission": "Agency-Rules",
+          "slug": "agencies-rules.index"
+        },
+        {
+          "url": "agencies-rules-applicable",
+          "name": "Agency Rules Applicables",
+          "icon": "circle",
+          "permission": "Agency-Rules-Applicables",
+          "slug": "agencies-rules-applicable.index"
+        },
+        {
+          "url": "subscribed-agencies-rules",
+          "name": "Subscribed-Agency-Rule",
+          "icon": "circle",
+          "permission": "Subscribed-Agency-Rule",
+          "slug": "Subscribed-Agency-rule.index"
+        }
+          
+      ]
+    },
+
+    
+    {
+      "name": "Investigation Management",
+      "icon": "grid",
+      "slug": "",
+      "permission": "laboratory-desk",
+      "submenu": [
+        {
+          "url": "investigation/patient-investigation/pathiology-index",
+          "name": "Laboratory Desk",
+          "icon": "circle",
+          "permission": "laboratory-desk",
+          "slug": "investigation.laboratory.index"
+        },
+        {
+          "url": "investigation/patient-investigation/radiology-index",
+          "name": "Radiology Desk",
+          "icon": "circle",
+          "permission": "radiology-desk",
+          "slug": "investigation.radiology.index"
+        }  
+      ]
+    },
+    {
+      "name": "Procedures",
+      "icon": "git-pull-request",
+      "slug": "",
+      "permission": "procedure_read",
+      "submenu": [
+        {
+          "url": "procedures",
+          "name": "Procedure Definition",
+          "icon": "circle",
+          "permission": "procedure",
+          "slug": "procedures.index"
+        },
+        {
+          "url": "procedure-prices",
+          "name": "Procedure Prices",
+          "icon": "circle",
+          "permission": "procedure-price_read",
+          "slug": "procedure-prices.index"
+        },
+        {
+          "url": "procedures/procedure-index",
+          "name": "Procedure Desk",
+          "icon": "circle",
+          "permission": "procedure-desk",
+          "slug": "procedure-procedure.index"
+        }
+      ]
+    },
+    {
+      "name": "Roles & Permission",
+      "icon": "shield",
+      "slug": "",
+      "permission": "roles_read",
+      "submenu": [
+        {
+          "url": "roles",
+          "name": "Roles",
+          "icon": "circle",
+          "permission": "roles_read",
+          "slug": "roles"
+        },
+        {
+          "url": "permissions",
+          "name": "Permission",
+          "icon": "circle",
+          "permission": "roles_read",
+          "slug": "permission"
+        },
+        {
+          "url": "permissions",
+          "name": "Test",
+          "icon": "circle",
+          "permission": "roles_read",
+          "slug": "permission"
+        }
+      ]
+    },
+    {
+      "name": "HMS Settings",
+      "icon": "settings",
+      "slug": "",
+      "permission": "hms-settings",
+      "submenu": [
+        {
+          "url": "has-permission",
+          "name": "Super Permissions",
+          "icon": "circle",
+          "permission": "hms-settings_read",
+          "slug": "has-permission.index"
+        },
+        {
+          "url": "branch",
+          "name": "Branches",
+          "icon": "circle",
+          "permission": "hms-branch",
+          "slug": "branch.index"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+Conposer:
+    1- Run commands of composer
+        Commands: 
+            1- composer install
+
+Npm:
+    1- Run commands of npm
+        Commands:
+            1- npm install
+            2- npm run watch
+
+Migrations:
+    1- Run migrations command
+        Commands: 
+            1- php artisan migrate
+
+
+Roles & Permission Deprication (Spatie)
+1- Add hms_id of auth user to parameters variable in create function of spatie library from vendor.
+    Change No1:
+        location : vendor\spatie\laravel-permission\src\Models\Role.php
+        Line No Almost: 48 
+        start From: $params = ['name' => $attributes['name'], 'guard_name' => $attributes['guard_name'],
+
+    
+
