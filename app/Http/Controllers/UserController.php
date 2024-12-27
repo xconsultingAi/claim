@@ -13,6 +13,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\PharmacistController;
 use App\Models\User;
+use App\Models\Shop;
 use App\Models\Patients;
 use App\Models\Role;
 use App\Models\Dependents;
@@ -23,7 +24,7 @@ use App\Models\Receptionists;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role as ModelsRole;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -36,13 +37,15 @@ class UserController extends Controller
         $pageConfigs = ['blankPage' => true];
         $maritalStatus = getMaterialstatusList();
         $roles = array();
+        $shops = Shop::where('is_active',1)->get();
         $hmsList = getHmsList();
         //$branches = getBranchesList();
         $roles = Role::where('hms_id', Auth::user()->hms_id)->get()->toArray();
-        return view('/user/add-user', ['pageConfigs' => $pageConfigs])->with([
+        return view('/user/add-user-first', ['pageConfigs' => $pageConfigs])->with([
             'roles' => $roles,
             'hmsList' => $hmsList,
-            'maritalStatus' => $maritalStatus
+            'maritalStatus' => $maritalStatus,
+            'shops' => $shops,
             // 'branches' => $branches,
             // 'userInfo' => $userInfo
         ]);
@@ -77,6 +80,10 @@ class UserController extends Controller
         $request->merge([
             'password' => Hash::make($request->password) // Hash the password before storing
         ]);
+        $request->merge([
+            'hms_id' => Auth::user()->hms_id,
+            'branch_id' => Auth::user()->id,
+        ]);
 
         try {
             DB::beginTransaction();
@@ -88,42 +95,42 @@ class UserController extends Controller
                 ], 400);
             }
 
-            $imageUrl = '';
-            if ($request->hasFile('profile_image')) {
-                $imageUrl = UploadAttachments::uploadAttachments($request, $this->path, 'profile_image');
-            }
+            // $imageUrl = '';
+            // if ($request->hasFile('profile_image')) {
+            //     $imageUrl = UploadAttachments::uploadAttachments($request, $this->path, 'profile_image');
+            // }
 
             $roleName = $role[0]->name;
             $createUser = User::create([
                 'hms_id' => $request->hms_id,
                 'branch_id' => $request->branch_id,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'father_husband' => $request->father_husband,
+                'name' => $request->name,
+                'username' => $request->username,
                 'email' => $request->email,
                 'password' => $request->password,
-                'phone' => $request->phone,
-                'cnic' => $request->cnic,
-                'address' => $request->address,
+                // 'phone' => $request->phone,
+                // 'cnic' => $request->cnic,
+                // 'address' => $request->address,
                 'role_id' => $request->role_id,
-                'profile_image' => $imageUrl,
-                'gender' => $request->gender,
-                'dob' => $formattedDate,
-                'status' => $request->status,
-                'is_super' => $request->is_super,
-                'is_employee' => $request->is_employee,
-                'is_dependent' => $request->is_dependent,
-                'er_firstname' => $request->er_firstname,
-                'er_lastname' => $request->er_lastname,
-                'er_email' => $request->er_email,
-                'er_phone' => $request->er_phone,
-                'er_cnic' => $request->er_cnic,
-                'er_address' => $request->er_address,
-                'er_mobile' => $request->er_mobile,
-                'er_address_1' => $request->er_address_1,
-                'er_address_2' => $request->er_address_2,
-                'er_address_3' => $request->er_address_3,
-                'er_relationship' => $request->er_relationship,
+                'shop_id' => $request->shop_id,
+                // 'profile_image' => $imageUrl,
+                // 'gender' => $request->gender,
+                // 'dob' => $formattedDate,
+                // 'status' => $request->status,
+                // 'is_super' => $request->is_super,
+                // 'is_employee' => $request->is_employee,
+                // 'is_dependent' => $request->is_dependent,
+                // 'er_firstname' => $request->er_firstname,
+                // 'er_lastname' => $request->er_lastname,
+                // 'er_email' => $request->er_email,
+                // 'er_phone' => $request->er_phone,
+                // 'er_cnic' => $request->er_cnic,
+                // 'er_address' => $request->er_address,
+                // 'er_mobile' => $request->er_mobile,
+                // 'er_address_1' => $request->er_address_1,
+                // 'er_address_2' => $request->er_address_2,
+                // 'er_address_3' => $request->er_address_3,
+                // 'er_relationship' => $request->er_relationship,
             ]);
             $createUser->assignRole($roleName);
 
@@ -185,33 +192,12 @@ class UserController extends Controller
             $user = $user->update([
                 'hms_id' => $request->hms_id,
                 'branch_id' => $request->branch_id,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'father_husband' => $request->father_husband,
+                'name' => $request->name,
+                'username' => $request->username,
                 'email' => $request->email,
                 'password' => $request->password,
-                'phone' => $request->phone,
-                'cnic' => $request->cnic,
-                'address' => $request->address,
                 'role_id' => $request->role_id,
-                'profile_image' => $imageUrl ? $imageUrl : $user->profile_image,
-                'gender' => $request->gender,
-                'dob' =>  $formattedDate,
-                'status' => $request->status,
-                'is_super' => $request->is_super,
-                'is_employee' => $request->is_employee,
-                'is_dependent' => $request->is_dependent,
-                'er_firstname' => $request->er_firstname,
-                'er_lastname' => $request->er_lastname,
-                'er_email' => $request->er_email,
-                'er_phone' => $request->er_phone,
-                'er_cnic' => $request->er_cnic,
-                'er_address' => $request->er_address,
-                'er_mobile' => $request->er_mobile,
-                'er_address_1' => $request->er_address_1,
-                'er_address_2' => $request->er_address_2,
-                'er_address_3' => $request->er_address_3,
-                'er_relationship' => $request->er_relationship,
+                'shop_id' => $request->shop_id,
             ]);
 
             DB::commit();
@@ -239,13 +225,28 @@ class UserController extends Controller
 
     public function getUserList()
     {
-        $users = User::Join('roles', 'users.role_id', '=', 'roles.id')
-            ->where('users.hms_id', Auth::user()->hms_id)
-            ->select(
-                'users.*',
-                'roles.name as role_name',
-                'roles.slug as role_slug'
-            )->get();
+        $authUser = Auth::user()->role_id;
+        // dd();
+        // foreach($userLists as $userList){
+        // dd($authUser .'=='. 15);
+            if($authUser != 15){
+                $users = User::where('users.hms_id', Auth::user()->hms_id)
+                    ->with('shop')->with('roles')->get();
+            }
+            else{
+                $users = User::Join('roles', 'users.role_id', '=', 'roles.id')
+                    ->join('shops', 'users.shop_id', '=', 'shops.id')
+                    ->where('users.hms_id', Auth::user()->hms_id)
+                    ->select(
+                        'users.*',
+                        'roles.name as role_name',
+                        'shops.name as shop_name',
+                        'roles.slug as role_slug'
+                    )->get();
+                }
+
+            // dd($users);
+        
         if ($users) {
             return response()->json([
                 'status' => 'success',
@@ -313,6 +314,7 @@ class UserController extends Controller
     {
         if ($request->id) {
             $result = $this->getUserRelatedInfo($request->id);
+            // dd($result);
             if ($result['status'] == 'success') {
                 return response()->json([
                     "status" => "success",
@@ -336,50 +338,54 @@ class UserController extends Controller
     {
         try {
             $user = User::where('id', $id)->first();
+            // dd($user);
             $user = $user ? $user->toArray() : array();
             if (count($user) > 0 && $user['role_id']) {
                 $role = Role::find($user['role_id'])->toArray();
-                if ($role && $role['slug']) {
-                    switch ($role['slug']) {
-                        case "patient":
-                            //$patientController = new PatientController();
-                            $patient = Patients::where('user_id', $id)->first();
-                            $user['patient'] = $patient ? $patient->toArray() : array();
-                            break;
-                        case "doctor":
-                            //$doctorController = new DoctorController();
-                            $doctor = Doctors::where('user_id', $id)->first();
-                            $user['doctor'] = $doctor ? $doctor->toArray() : array();
-                            break;
-                        case "receptionist":
-                            //$receptionistController = new ReceptionistController();
-                            $receptionist = Receptionists::where('user_id', $id)->first();
-                            $user['receptionist'] = $receptionist ? $receptionist->toArray() : array();
-                            break;
-                        case "pharmacist":
-                            //$pharmacistController = new PharmacistController();
-                            $pharmacist = Pharmacists::where('user_id', $id)->first();
-                            $user['pharmacist'] = $pharmacist ? $pharmacist->toArray() : array();
-                            break;
-                        default:
-                            $user['default'] = array();
-                    }
-                }
+                if($user['shop_id'] != null){
+                $shop = Shop::find($user['shop_id'])->toArray();
+                // if ($role && $role['slug']) {
+                //     switch ($role['slug']) {
+                //         case "patient":
+                //             //$patientController = new PatientController();
+                //             $patient = Patients::where('user_id', $id)->first();
+                //             $user['patient'] = $patient ? $patient->toArray() : array();
+                //             break;
+                //         case "doctor":
+                //             //$doctorController = new DoctorController();
+                //             $doctor = Doctors::where('user_id', $id)->first();
+                //             $user['doctor'] = $doctor ? $doctor->toArray() : array();
+                //             break;
+                //         case "receptionist":
+                //             //$receptionistController = new ReceptionistController();
+                //             $receptionist = Receptionists::where('user_id', $id)->first();
+                //             $user['receptionist'] = $receptionist ? $receptionist->toArray() : array();
+                //             break;
+                //         case "pharmacist":
+                //             //$pharmacistController = new PharmacistController();
+                //             $pharmacist = Pharmacists::where('user_id', $id)->first();
+                //             $user['pharmacist'] = $pharmacist ? $pharmacist->toArray() : array();
+                //             break;
+                //         default:
+                //             $user['default'] = array();
+                //     }
+                // }
 
-                $user['employee'] = array();
-                if ($user['is_employee'] == 1) {
-                    //$employeeController = new EmployeeController();
-                    $employee = Employees::where('user_id', $id)->first();
-                    $user['employee'] = $employee ? $employee->toArray() : array();
-                }
+                // $user['employee'] = array();
+                // if ($user['is_employee'] == 1) {
+                //     //$employeeController = new EmployeeController();
+                //     $employee = Employees::where('user_id', $id)->first();
+                //     $user['employee'] = $employee ? $employee->toArray() : array();
+                // }
 
-                $user['dependent'] = array();
-                if ($user['is_dependent'] == 1) {
-                    //$dependentController = new DependentController();
-                    $dependent = Dependents::where('user_id', $id)->first();
-                    $user['dependent'] = $dependent ? $dependent->toArray() : array();
-                }
-
+                // $user['dependent'] = array();
+                // if ($user['is_dependent'] == 1) {
+                //     //$dependentController = new DependentController();
+                //     $dependent = Dependents::where('user_id', $id)->first();
+                //     $user['dependent'] = $dependent ? $dependent->toArray() : array();
+                // }
+                $user['shop'] = $shop;
+            }
                 $user['role'] = $role;
                 return array("status" => "success", 'user' => $user);
             } else {
@@ -528,18 +534,19 @@ class UserController extends Controller
 
         if ($roles && $roles->id) {
             $usersCountDetail['totalUser'] = User::where('hms_id', Auth::user()->hms_id)
-                ->where('branch_id', Auth::user()->branch_id)->count();
+                // ->where('branch_id', Auth::user()->branch_id)
+                ->count();
 
             $usersCountDetail['pendingUser'] = User::where('hms_id', Auth::user()->hms_id)
-                ->where('branch_id', Auth::user()->branch_id)
+                // ->where('branch_id', Auth::user()->branch_id)
                 ->where('status', 'pending')->count();
 
             $usersCountDetail['activeUser'] = User::where('hms_id', Auth::user()->hms_id)
-                ->where('branch_id', Auth::user()->branch_id)
+                // ->where('branch_id', Auth::user()->branch_id)
                 ->where('status', 'active')->count();
 
             $usersCountDetail['inActiveUser'] = User::where('hms_id', Auth::user()->hms_id)
-                ->where('branch_id', Auth::user()->branch_id)
+                // ->where('branch_id', Auth::user()->branch_id)
                 ->where('status', 'in_active')->count();
 
             return response()->json([

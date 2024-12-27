@@ -1,6 +1,7 @@
 @media print {
     body {
         visibility: hidden;
+        background-image:  url(https://www.urbansole.com.pk/cdn/shop/files/Water_Resistant_4_v2_1880x.jpg?v=1733924785);
     }
 
     #letter {

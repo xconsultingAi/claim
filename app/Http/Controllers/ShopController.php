@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\EmployeeController;
 use App\Models\User;
+use App\Models\Shop;
 use App\Models\Role;
 use App\Models\Branch;
 use Illuminate\Support\Facades\Hash;
@@ -65,30 +66,19 @@ class ShopController extends Controller
                     "message" => 'role not found.',
                 ], 400);
             }
-
-            $request->merge([
-                'password' => Hash::make($request->password) // Hash the password before storing
-            ]);
             $request->merge([
                 'hms_id' => Auth::user()->hms_id,
             ]);
 
-            $createUser = User::create([
-                'hms_id' => $request->hms_id,
+            $createShop = Shop::create([
                 'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password,
-                'mobile_no' => $request->mobile_no,
+                'shop_number' => $request->shop_number,
                 'address' => $request->address,
-                'role_id' => $roles,
-                'latitude'=>$request->latitude,
-                'longitude'=>$request->longitude,
-
             ]);
        
-            if (!$createUser->id) {
+            if (!$createShop->id) {
                 DB::rollBack();
-                return response()->json($createUser);
+                return response()->json($createShop);
             }
 
           
@@ -124,7 +114,7 @@ class ShopController extends Controller
     public function edit($id)
     {
         $statuses = getPatientStatusList();
-        $branch = User::find($id);
+        $branch = Shop::find($id);
      
         return view('shop.edit', [
             'statuses' => $statuses,
@@ -147,8 +137,8 @@ class ShopController extends Controller
         $validator = Validator::make($request->all(), [
             "id" => "required",
             "name" => "required",
-            "email" => "required",
-            "password" => "required",
+            "shop_number" => "required",
+            "address" => "required",
         ]);
        
         if ($validator->fails()) {
@@ -170,32 +160,15 @@ class ShopController extends Controller
 
         try {
             DB::beginTransaction();
-            $user = User::find($request->id);
-            if ($request->password != $user->password) {
-                $request->merge([
-                    'password' => Hash::make($request->password) // Hash the password before storing
-                ]);
-            }
+            $shop = Shop::find($request->id);
             
-            $user->update([
+            $shop->update([
                 'hms_id' => $request->hms_id,
                 'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password,
-                'mobile_no' => $request->mobile_no,
-                'address' => $request->address,
-                'latitude'=>$request->latitude,
-                'longitude'=>$request->longitude,
-
-
-              
-
-              
+                'shop_number' => $request->shop_number,
+                'address' => $request->address,              
             ]);
-            if (!$user->id) {
-                DB::rollBack();
-                return response()->json($user);
-            }
+
             DB::commit();
             return response()->json(
                 [
@@ -227,9 +200,7 @@ class ShopController extends Controller
         try {
             DB::beginTransaction();
             if ($id) {
-                $branch = User::find($id);
-                $branch->status = INACTIVE;
-                $branch->save();
+                $branch = Shop::find($id);
                 $branch->delete();
                 if ($branch) {
                     DB::commit();
@@ -268,10 +239,8 @@ class ShopController extends Controller
                 "message" => LOGIN_FAILURE,
             ],400);
         }
-        $branch = User::join('roles', 'users.role_id', '=', 'roles.id')
-        ->where('slug', 'shop')
-        ->select('users.*')
-        ->get();
+
+        $branch = Shop::all();
 
         return response()->json([
             'status' => SUCCESS,
@@ -279,5 +248,42 @@ class ShopController extends Controller
             'data' => $branch,
         ]);
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(Request $request)
+    {
+
+        if (!Auth::user() || !Auth::user()->hms_id) {
+            return response()->json([
+                "status" => FAILURE,
+                "message" => 'Please login again.',
+            ], 400);
+        }
+        try {
+            DB::beginTransaction();
+            $shop = Shop::find($request->id);
+            
+            $shop->update([
+                'is_active' => $request->status,           
+            ]);
+
+            DB::commit();
+            return response()->json(
+                [
+                    "status" => SUCCESS,
+                    'message' => 'Shop Status has been updated successful'
+                ],
+            );
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(["status" => FAILURE, 'message' => $e], 401);
+        }
+    }
+
    
 }

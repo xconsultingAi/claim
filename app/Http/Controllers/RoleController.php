@@ -259,11 +259,8 @@ class RoleController extends Controller
         }
 
         $usersWithRoles = User::where('hms_id', Auth::user()->hms_id)
-            ->select('id', 'email', 'name', 'cnic', 'status')
-            ->with('roles:id,name')
-            ->whereHas('roles', function ($q) {
-                $q->where('name', '!=', 'Patient'); // Assuming PATHIOLOGY is a string constant
-            })->get()->toArray();
+            ->select('id', 'email', 'name', 'username')
+            ->with('roles:id,name')->get()->toArray();
         return response()->json([
             'status' => SUCCESS,
             'message' => GET_RECORD_SUCCESS,

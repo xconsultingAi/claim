@@ -126,10 +126,8 @@
           <th></th>
           <th>Name</th>
           <th>Role</th>
-          <th>Cnic</th>
-          <th>Gender</th>
-          <th>Status</th>
-          <th>Actions</th>
+          <th>User Name</th>
+          <!-- <th>Actions</th> -->
         </tr>
       </thead>
     </table>

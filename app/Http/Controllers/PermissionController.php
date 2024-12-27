@@ -63,6 +63,10 @@ class PermissionController extends Controller
         try {
             DB::beginTransaction();
             $permission = Permission::create(['name' => $request->input('name')]);
+            $permission = DB::table('hms_has_permission')->insert([
+                'hms_id' => Auth::user()->hms_id,
+                'permissions_id' => $permission->id,
+            ]);
             if ($permission) {
                 DB::commit();
                 return response()->json([
