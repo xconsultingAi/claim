@@ -31,7 +31,7 @@ $configData = Helper::applClasses();
           <span class="brand-logo">
             {{-- <img src="images/logo/pcmlogo.png" alt="Logo"> --}}
             &nbsp; 
-            <img src="{{ auth()->user()->hms->logo }}" height="40" alt="FleetConnect" style="max-width: 130px !important;" />
+            <img src="https://www.urbansole.com.pk/cdn/shop/files/LOGO_9f054002-ed75-4464-9370-d672304d3457_200x.jpg?v=1734434517" height="40" alt="UrbanSole" style="max-width: 130px !important;" />
             {{--<svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
               <defs>

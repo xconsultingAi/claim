@@ -156,7 +156,8 @@ if (!function_exists('getHmsList')) {
 if (!function_exists('gethmsName')) {
     function gethmsName()
     {
-        $hms = Hms::where('id', Auth::user()->hms_id)
+        if(Auth::user()!=null){
+            $hms = Hms::where('id', Auth::user()->hms_id)
             ->select('name')
             ->get();
         if ($hms) {
@@ -165,7 +166,11 @@ if (!function_exists('gethmsName')) {
                 return $hms->name;
             }
         }
-        return ' ';
+        }else{
+            return redirect('/');
+        }
+        
+        
     }
 }
 
@@ -441,22 +446,6 @@ if (!function_exists('getRequestStatusList')) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //not used in system
 if (!function_exists('calculateBottles')) {
     function calculateBottles($patientRequiredVolume, $volumePerBottle = 20)
@@ -565,6 +554,8 @@ if (!function_exists('getMedicineTypeList')) {
                     "driver" => "/driver",
                     "shop" => "/shop",
                     "company" => "/company",
+                    'qa' => '/qa',
+                    'distribution' => '/distribution',
                     "accountant" => "/private-clinic/appointment/calendar-view",
                     "super-admin" => "/private-clinic/appointment/calendar-view",
                 );

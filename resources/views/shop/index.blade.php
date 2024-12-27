@@ -15,8 +15,7 @@
         <thead class="table-light">
           <tr>
             <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
+            <th>Shop Number</th>
             <th>Address</th>
             <th>Status</th>
             <th>Actions</th>
@@ -27,7 +26,9 @@
   </div>
   <!-- list and filter end -->
 </section>
+@include('shop/modal/update-status-modal')
 @endsection
+
 @section('vendor-script')
     <script src="{{ asset(mix('vendors/js/tables/datatable/jquery.dataTables.min.js')) }}"></script>
     <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.bootstrap5.min.js')) }}"></script>
@@ -46,4 +47,5 @@
 @section('page-script')
   {{-- Page js files --}}
   <script src="{{ asset(mix('js/scripts/shop/shop-listing.js')) }}"></script>
+  <script src="{{ asset('js/scripts/shop/update-status-modal.js') }}"></script>
 @endsection

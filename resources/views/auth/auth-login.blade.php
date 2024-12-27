@@ -63,10 +63,10 @@
     <div class="smcir">
       <div class="row py-4 justify-content-center">
         <div class="col-sm-12 col-md-5 py-3 card-round d-flex align-items-center justify-content-center bg-white">
-          <div class="px-md-5">
+          <div class="px-md-5 login-page-width">
             <div class="fs-2 text-center fw-bolder">WELCOME TO</div>
-            <div class="ms-auto col-2 me-auto">
-              <img class="img-fluid my-2" src="{{ asset('images/icons/greenlogocopy.png') }}" />
+            <div class="ms-auto col-4 me-auto">
+              <img class="img-fluid my-2" src="https://www.urbansole.com.pk/cdn/shop/files/LOGO_9f054002-ed75-4464-9370-d672304d3457_200x.jpg?v=1734434517" />
             </div>
             @if($response)
               <p class="text-danger">{{ $response['message'] }}</p>
@@ -77,7 +77,7 @@
               @csrf
               <div class="mt-1">
                 <div class="input-group input-group-merge form-password-toggle">
-                  <input type="email" class="form-control rounded-pill form-control-merge" id="email" name="email" tabindex="1" placeholder="USER NAME" aria-describedby="email" />
+                  <input type="email" class="form-control rounded-pill form-control-merge" id="email" name="email" tabindex="1" placeholder="Enter Your Email" aria-describedby="email" />
                   <span class="poss cursor-pointer"><i data-feather="mail"></i></span>
                 </div>
               </div>

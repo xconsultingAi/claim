@@ -10,7 +10,7 @@
   <!-- END: Main Menu-->
 
   <!-- BEGIN: Content-->
-  <div class="app-content content {{ $configData['pageClass'] }}">
+  <div class="app-content content {{ $configData['pageClass'] }}" style="background-image: url(https://www.urbansole.com.pk/cdn/shop/files/Water_Resistant_4_v2_1880x.jpg?v=1733924785);">
     <!-- BEGIN: Header-->
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>

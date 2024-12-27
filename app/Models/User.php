@@ -14,6 +14,7 @@ use App\Models\{
     Hms,
     Branch,
     Role,
+    Shop,
     Doctors,
     Employees,
     Patients,
@@ -42,18 +43,20 @@ class User extends Authenticatable
         'hms_id',
         'branch_id',
         'name',
+        'username',
         'email',
         'password',
-        'phone',
-        'mobile_no',
-        'cnic',
-        'address',
+        // 'phone',
+        // 'mobile_no',
+        // 'cnic',
+        // 'address',
         'role_id',
-        'profile_image',
-        'status',
-        'latitude',
-        'longitude',
-        'contact_person',
+        'shop_id',
+        // 'profile_image',
+        // 'status',
+        // 'latitude',
+        // 'longitude',
+        // 'contact_person',
     ];
     /*------------------- Logs Work Start----------*/
     protected static $logAttributes = ['*'];
@@ -150,7 +153,10 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
     
-    
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id', 'id');
+    }
 
     public function ScopeJoinWithDoctor($query)
     {

@@ -26,34 +26,13 @@
             </div>
 
             <div class="mb-1 col-md-12">
-              <label class="form-label" for="mobile_no">Mobile Number</label>
-              <input type="text" name="mobile_no" id="mobile_no" class="form-control"  value="{{ $branch['mobile_no'] ?? ''}}" placeholder="(472) 765-3654" />
+              <label class="form-label" for="mobile_no">Shop Number</label>
+              <input type="text" name="shop_number" id="shop_number" class="form-control"  value="{{ $branch['shop_number'] ?? ''}}" placeholder="(472) 765-3654" />
             </div>
             <div class="mb-1 col-md-12">
               <label class="form-label" for="address">Address</label>
-              <input type="text" name="address" id="address" class="form-control" value="{{ $branch['address'] ?? ''}}" placeholder="(472) 765-3654" />
+              <input type="text" name="address" id="address" class="form-control" value="{{ $branch['address'] ?? ''}}" placeholder="Your Address" />
             </div>
-
-            <div id="map" style="height: 300px; width: 100%; margin-bottom: 15px;"></div>
-
-              <div class="mb-1 col-md-6" hidden >
-                <label class="form-label" for="latitude">Latitude</label>
-                <input type="text" name="latitude" id="latitude"  value="{{ $branch['latitude'] ?? ''}}"class="form-control" readonly />
-              </div>
-              <div class="mb-1 col-md-6" hidden >
-                <label class="form-label" for="longitude">Longitude</label>
-                <input type="text" name="longitude" id="longitude" value="{{ $branch['longitude'] ?? ''}}"  class="form-control" readonly />
-              </div>
-
-
-            <div class="mb-1 col-md-12">
-              <label class="form-label" for="email">Email</label>
-              <input type="text" name="email" id="email" class="form-control" value="{{ $branch['email'] ?? ''}}" placeholder="Abc@mailinator.com" />
-            </div>
-            <div class="mb-1 col-md-12">
-              <label class="form-label" for="password">Password</label>
-              <input type="password" name="password" id="password" class="form-control" value="{{ $branch['password'] ?? ''}}" placeholder="Abc@mailinator.com" />
-            </div>   
               <div class="col-12">
                 <button type="submit" class="btn btn-primary" name="update" value="Update">Update</button>
                 <a type="button" href="#" id="back_button" class="btn btn-secondary">Cancel</a>

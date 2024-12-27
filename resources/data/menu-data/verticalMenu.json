@@ -16,58 +16,67 @@
           "permission": "dashboard"
         }
       ]
-    },
+    }, 
     {
-      "url": "company/",
-          "name": "Logistics Company",
-          "icon": "calendar",
-          "permission": "company",
-          "slug": "company.index"
-    },
+      "name": "Shop Management",
+      "icon": "plus-square",
+      "slug": "",
+      "permission": "claim",
+      "submenu": [
+       
     {
-      "url": "private-clinic/appointment/",
-      "name": "Appointments",
-      "icon": "file-plus",
-      "permission": "appointment",
-      "slug": "private-clinic.appointment.index"
-    },
-    
- 
-    {
-      "url": "shop/",
-          "name": "Shop",
-          "icon": "plus-square",
-          "permission": "shop",
-          "slug": "shop.index"
-    },
-    {
-      "url": "vehicle/",
-          "name": "Vehicles",
+      "url": "claim/",
+          "name": "Claims",
           "icon": "circle",
-          "permission": "vehicle",
-          "slug": "vehicle.index"
+          "permission": "claim",
+          "slug": "claim.index"
     },
     {
-      "url": "driver/",
-          "name": "Drivers",
+      "url": "claim/closed",
+          "name": "Closed Claims",
           "icon": "circle",
-          "permission": "driver",
-          "slug": "driver.index"
+          "permission": "claim",
+          "slug": "claim.closed.claim"
+    }
+    ]
     },
     {
-      "url": "location/",
-          "name": "Location Search",
+      "name": "QA Management",
+      "icon": "plus-square",
+      "slug": "",
+      "permission": "QA",
+      "submenu": [
+    {
+      "url": "qa/",
+          "name": "Claims",
           "icon": "circle",
-          "permission": "location",
-          "slug": "location.index"
+          "permission": "QA",
+          "slug": "qa.index"
+    }
+  ]
+},   
+{
+  "name": "Distributions",
+  "icon": "plus-square",
+  "slug": "",
+  "permission": "Distribution",
+  "submenu": [ 
+    {
+      "url": "distribution/",
+          "name": "Claims",
+          "icon": "circle",
+          "permission": "Distribution",
+          "slug": "distribution.index"
     },
     {
-      "url": "searchlocation/",
-          "name": "Location Searchs",
+      "url": "distribution/repairs",
+          "name": "Repairs",
           "icon": "circle",
-          "permission": "searchlocation",
-          "slug": "searchlocation.index"
-    },
+          "permission": "Distribution",
+          "slug": "distribution.repairs"
+    }
+  ]
+},
     {
       "name": "Roles & Permission",
       "icon": "shield",
@@ -97,10 +106,24 @@
       "permission": "hms-settings",
       "submenu": [
         {
+          "url": "shop/",
+              "name": "Shop",
+              "icon": "circle",
+              "permission": "shop",
+              "slug": "shop.index"
+        },
+        {
+          "url": "user/list",
+              "name": "User",
+              "icon": "circle",
+              "permission": "private-user",
+              "slug": "user.index"
+        },
+        {
           "url": "has-permission",
           "name": "Super Permissions",
           "icon": "circle",
-          "permission": "hms-settings",
+          "permission": "roles_read",
           "slug": "has-permission.index"
         }
       ]

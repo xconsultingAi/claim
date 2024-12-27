@@ -64,7 +64,9 @@
       </div>
       <ul class="nav navbar-nav align-items-center ms-auto">
 
-        <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="{{ $configData['theme'] === 'dark' ? 'sun' : 'moon' }}"></i></a></li>
+        <li class="nav-item d-none d-lg-block">
+          <!-- <a class="nav-link nav-link-style"><i class="ficon" data-feather="{{ $configData['theme'] === 'dark' ? 'sun' : 'moon' }}"></i></a> -->
+        </li>
         <li class="nav-item dropdown dropdown-user">
           <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-bs-toggle="dropdown" aria-haspopup="true">
             <div class="user-nav d-sm-flex d-none">
@@ -87,7 +89,7 @@
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
             <h6 class="dropdown-header">Manage Profile</h6>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ Auth::user() ? route('user.add-user', Auth::user()->id) : 'javascript:void(0)' }}">
+            <a class="dropdown-item" href="{{ Auth::user() ? url('/user/add-user/'.Auth::user()->id) : 'javascript:void(0)' }}">
               <i class="me-50" data-feather="user"></i> Edit Profile
             </a>
             @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())

@@ -124,6 +124,8 @@
       var roleName = $(this).attr('data-roleName');
       $('#roleId').val(roleId);
       $('#modalRoleName').val(roleName);
+      console.log('/roles/'+roleId+'/edit');
+      
       fetch(`/roles/${roleId}/edit`)
       .then(response => {
         if (!response.ok) {
@@ -132,6 +134,8 @@
         return response.json();
       })
       .then(data => {
+        console.log(data.data);
+        
         // Do something with the response data
         $('#permissions_table').empty();
         $('#permissions_table').append(data.data);

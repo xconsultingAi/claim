@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('cnic', 100);
             $table->string('address', 100);
             $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('shop_id');
             //$table->enum('role', ['patient', 'doctor', 'receptionist', 'pharmacist'])->nullable()->default('patient');
             $table->string('profile_image')->nullable();
             $table->enum('gender', ['female', 'male', 'other', 'not_specified'])->nullable()->default('not_specified');

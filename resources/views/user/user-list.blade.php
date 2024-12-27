@@ -39,7 +39,7 @@
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
           <div>
-            <h3 class="fw-bolder mb-75" id="pendingPatient"></h3>
+            <h3 class="fw-bolder mb-75" id="pendingUser"></h3>
             <span>Pending Users</span>
           </div>
           <div class="avatar bg-light-danger p-50">
@@ -54,7 +54,7 @@
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
           <div>
-            <h3 class="fw-bolder mb-75" id="activePatient"></h3>
+            <h3 class="fw-bolder mb-75" id="activeUser"></h3>
             <span>Active Users</span>
           </div>
           <div class="avatar bg-light-success p-50">
@@ -69,7 +69,7 @@
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
           <div>
-            <h3 class="fw-bolder mb-75" id="inActivePatient"></h3>
+            <h3 class="fw-bolder mb-75" id="inActiveUser"></h3>
             <span>InActives Users</span>
           </div>
           <div class="avatar bg-light-warning p-50">
@@ -92,11 +92,9 @@
           <tr>
             <th></th>
             <th>Name</th>
-            <th>Employee No/<br> Patient Id</th>
+            <th>User Name</th>
             <th>Role</th>
-            <th>CNIC</th>
-            <th>Gender</th>
-            <th>Status</th>
+            <th>Shop</th>
             <th>Actions</th>
           </tr>
         </thead>
