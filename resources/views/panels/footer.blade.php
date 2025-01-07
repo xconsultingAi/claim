@@ -1,7 +1,7 @@
 <!-- BEGIN: Footer-->
 <footer
   class="footer footer-light footer-background {{ $configData['footerType'] === 'footer-hidden' ? 'd-none' : '' }} {{ $configData['footerType'] }}">
-  <p class="clearfix mb-0">
+  <p class="clearfix mb-0" style="margin-left: 260px;">
     <span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy;
       <script>
         document.write(new Date().getFullYear())

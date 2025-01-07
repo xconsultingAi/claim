@@ -31,8 +31,8 @@
                   </label>
                 </div>
               </div>
-            </div>
-          </div> -->
+            </div> -->
+          </div> 
           <select class="select2 w-100 form-control" name="status" id="status">
                       <option value="">Select Status</option>
                       <option value="1">Active</option>

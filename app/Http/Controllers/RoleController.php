@@ -94,19 +94,19 @@ class RoleController extends Controller
             ]);
 
             
-            if ($role->syncPermissions($request->input('permissions'))) {
-                DB::commit();
-                return response()->json([
-                    "status" => SUCCESS,
-                    'message' => CREATED_RECORD_SUCCESS
-                ]);
-            } else {
-                DB::rollBack();
-                return response()->json([
-                    "status" => FAILURE,
-                    'message' => CREATED_RECORD_FAILURE
-                ]);
-            }
+                if ($role->syncPermissions($request->input('permissions'))) {
+                    DB::commit();
+                    return response()->json([
+                        "status" => SUCCESS,
+                        'message' => CREATED_RECORD_SUCCESS
+                    ]);
+                } else {
+                    DB::rollBack();
+                    return response()->json([
+                        "status" => FAILURE,
+                        'message' => CREATED_RECORD_FAILURE
+                    ]);
+                }
         } catch (\Exception $e) {
             DB::rollBack();
             Log::debug($e);

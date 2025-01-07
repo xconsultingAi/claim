@@ -346,13 +346,18 @@ class ClaimController extends Controller
         // }elseif(Auth::user()->roles[0]->name == 'Super Admin'){
         //     $branch = Claim::with('shops')->get();
         // }
-        $branch_id = Claim::find($branch[0]->id);
-        $imageUrl = $branch_id->invoice_image ? asset('storage/' . $branch_id->invoice_image) : null;
+        // dd(!$branch);
+        $imageUrl = null;
+        if(!$branch){
+            $branch_id = Claim::find($branch[0]->id);
+            $imageUrl = $branch_id->invoice_image ? asset('storage/' . $branch_id->invoice_image) : null;
+        }
+        // dd($imageUrl == null);
         return response()->json([
             'status' => SUCCESS,
             'message' => GET_RECORD_SUCCESS,
             'data' => $branch,
-            'image' => $imageUrl,
+            ' image' => $imageUrl,
         ]);
     }
     public function getclosedclaimList()
