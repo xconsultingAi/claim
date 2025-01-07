@@ -208,7 +208,11 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/submit-record/{id}', [DistributionController::class, 'submitRecord'])->name('distributionSubmitRecord');
     });
 });
-
+if(url()->full() == 'http://127.0.0.1:8000/login'){
+    Route::get('/login',function(){
+        return redirect()->route('auth-login');
+    });
+}
 
 
 /* Route Dashboards */

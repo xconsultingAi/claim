@@ -527,20 +527,6 @@ if (!function_exists('getMedicineTypeList')) {
                 $redirectUrl = array(
                     "admin" => "/",
                     "super-admin" => "/",
-                    "deo-admin" => "/",
-                    "deo" => "/patient-visit",
-                    "receptionist" => "/patient-visit",
-                    "pharmacist" => "/medicines/medicine-dispensed",
-                    "lab-technician" => "/investigation/patient-investigation/pathiology-index",
-                    "doctor" => "/doctor-desk/opd/",
-                    "patient" => "/doctor-desk/opd/",
-                    "hms-ceo" => "/",
-                    "executive" => "/patient/list",
-                    "lp-vendor" => "/medicines/request-indent",
-                    "branch-owner" => "/",
-                    "pcm-admin" => "/",
-                    "doctor-view-only" => "/report/patient-visit",
-                    "doctor-additional-access" => "/doctor-desk/opd"
                 );
                 if ($redirectUrl[$role]) {
                     return $redirectUrl[$role];
@@ -548,16 +534,11 @@ if (!function_exists('getMedicineTypeList')) {
                 return '/';
             } else {
                 $redirectUrl = array(
-                    "admin" => "/private-clinic/appointment/calendar-view",
-                    "receptionist" => "/private-clinic/appointment/calendar-view",
-                    "pharmacist" => "private-clinic/appointment/calendar-view",
-                    "driver" => "/driver",
+                    "admin" => "/",
                     "shop" => "/shop",
-                    "company" => "/company",
                     'qa' => '/qa',
                     'distribution' => '/distribution',
-                    "accountant" => "/private-clinic/appointment/calendar-view",
-                    "super-admin" => "/private-clinic/appointment/calendar-view",
+                    "super-admin" => "/",
                 );
                 if ($redirectUrl[$role]) {
                     return $redirectUrl[$role];
