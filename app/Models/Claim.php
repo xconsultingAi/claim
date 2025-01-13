@@ -33,7 +33,7 @@ class Claim extends Model
         'size',
         'inward_gate_pass',
         'is_received',
-        'received_remarks',
+        'receiving_remarks',
         'received_date_and_time',
         'invoice_image',
     ];

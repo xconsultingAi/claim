@@ -346,6 +346,7 @@ class ClaimController extends Controller
         // }elseif(Auth::user()->roles[0]->name == 'Super Admin'){
         //     $branch = Claim::with('shops')->get();
         // }
+<<<<<<< Updated upstream
         // dd(!$branch);
         $imageUrl = null;
         if(!$branch){
@@ -354,6 +355,14 @@ class ClaimController extends Controller
         }
         // dd($imageUrl == null);
         return response()->json([
+=======
+		$imageUrl = null;
+		if(!$branch){
+        $branch_id = Claim::find($branch[0]->id);
+        $imageUrl = $branch_id->invoice_image ? asset('storage/' . $branch_id->invoice_image) : null;
+        }
+		return response()->json([
+>>>>>>> Stashed changes
             'status' => SUCCESS,
             'message' => GET_RECORD_SUCCESS,
             'data' => $branch,

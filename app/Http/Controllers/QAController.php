@@ -51,13 +51,13 @@ class QAController extends Controller
             if($request->status == 2){
                 $claim->update([
                     'status' => $request->status,
-                    'message' => $request->qa_message,
+                    'qa_message' => $request->qa_message,
                     'is_closed' => 1,         
                 ]);
             }else{
                 $claim->update([
                     'status' => $request->status,
-                    'message' => $request->qa_message,      
+                    'qa_message' => $request->qa_message,      
                 ]);
             }
             DB::commit();

@@ -88,7 +88,7 @@
               <input type="file" name="invoice_image" id="invoice_image" class="form-control" accept="image/*" required>
               </div>
               <div class="mb-1 col-md-12">
-              <label for="image">Upload Invoice Image:</label>
+              <label for="image">Upload Defected Shoes Image:</label>
               <input type="file" name="defect_image[]" id="defect_image" class="form-control" accept="image/*" multiple>
               </div>
               

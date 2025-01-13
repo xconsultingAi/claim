@@ -424,4 +424,18 @@ class User extends Authenticatable
             'insurance_plans.*',
         );
     }
+	    public function hasPermission($permission)
+    {
+        // Example: Check permission through roles (adjust logic based on your system)
+        return $this->getPermissions()->contains('name', $permission);
+    }
+
+    public function getPermissions()
+    {
+        // Retrieve permissions dynamically through roles
+        return $this->roles()->with('permissions')->get()
+                    ->pluck('permissions')
+                    ->flatten()
+                    ->unique('id');
+    }
 }
