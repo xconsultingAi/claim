@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Permission\Models\Permission;
 
 class Role extends Model
 {
@@ -73,5 +74,9 @@ class Role extends Model
             ->where('branch_id', Auth::user()->branch_id)
             ->where('id', $role_id)
             ->where('status', 'active');
+    }
+	    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
     }
 }

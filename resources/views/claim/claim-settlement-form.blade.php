@@ -112,10 +112,6 @@
                     <th colspan="3">Approved Settlement:</th>
                     <td colspan="3">{{$claim[0]->status == 3 ? 'Repair' :($claim[0]->status == 4 ? 'Replacement' : ($claim[0]->status == 5 ? 'Received' : 'Rejected'))}}</td>
                 </tr>
-                <tr>
-                    <th colspan="3">Approved Settlement:</th>
-                    <td colspan="3">{{$claim[0]->status == 3 ? 'Repair' :($claim[0]->status == 4 ? 'Replacement' : ($claim[0]->status == 5 ? 'Received' : 'Rejected'))}}</td>
-                </tr>
             </table>
 
         </form>

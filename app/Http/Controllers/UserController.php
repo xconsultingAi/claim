@@ -217,11 +217,6 @@ class UserController extends Controller
         return view('/user/user-list', ['pageConfigs' => $pageConfigs]);
     }
 
-    public function pcmUserIndex()
-    {
-        $pageConfigs = ['pageHeader' => false];
-        return view('/private-clinic/user/index', ['pageConfigs' => $pageConfigs]);
-    }
 
     public function getUserList()
     {
@@ -245,7 +240,6 @@ class UserController extends Controller
                     )->get();
                 }
 
-            // dd($users);
         
         if ($users) {
             return response()->json([

@@ -118,13 +118,6 @@
               "icon": "circle",
               "permission": "private-user",
               "slug": "user.index"
-        },
-        {
-          "url": "has-permission",
-          "name": "Super Permissions",
-          "icon": "circle",
-          "permission": "roles_read",
-          "slug": "has-permission.index"
         }
       ]
     }

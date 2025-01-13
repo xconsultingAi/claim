@@ -69,16 +69,15 @@ class DistributionController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'status' => $request->status,
-            'message' => $request->distribution_message,
+            'distribution_message' => $request->distribution_message,
         ]);
-
         try {
             DB::beginTransaction();
             $claim = Claim::find($request->id);
             
             $claim->update([
                 'status' => $request->status,
-                'message' => $request->distribution_message,
+                'distribution_message' => $request->distribution_message,
                 'is_closed' => 1,            
             ]);
             DB::commit();
